@@ -16,7 +16,6 @@ import org.jsoup.nodes.Element
 import java.io.IOException
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
 
 class HtmlRequest {
     class MyCallback(private val context: Context, private val htmlRequest: HtmlRequest, private val forceShow: Boolean): Callback {
@@ -43,6 +42,7 @@ class HtmlRequest {
             var hour = 0
 
             val doc = Jsoup.parse(response.body?.string())
+            response.close()
             val tableDivs = doc.select("div[class=cld_box01]")
             var index = -1
             for (box: Element in tableDivs) {
